@@ -1,7 +1,7 @@
 <script setup>
 
 
-
+// var imageSource = require('@assets/mijasa.png')
 var dummyArray = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]
 var skillArray = ["Akademik","Aldatmaca","Atıcılık","Bağlantılar","Beden","Çeviklik","Empati","Farkındalık","Gizlilik","Gözlem","Hırsızlık","İlim","İrade","Kaynaklar","Kışkırtma","Muhabbet","Sürücülük","Yakın Dövüş","Zanaat"]
 
@@ -15,8 +15,9 @@ function createSheet(selection)
 
     if (selection == 0)
     {
+        
         var mijasaPNG = new Image();
-        mijasaPNG.src = 'assets/assets/mijasa.png';
+        mijasaPNG.src = 'https://raw.githubusercontent.com/BioKZM/Fate/master/assets/mijasa.png';
         console.log(mijasaPNG)
         mijasaPNG.onload = function()
         {
@@ -278,7 +279,7 @@ function getJSONdata()
 </script>
 
 <template>
-    <img src="../assets/mijasa.png" style="display:none">
+    <!-- <img src="../assets/mijasa.png" style="display:none"> -->
     <div class = "grid justify-center text-white">
         <canvas id = "sheetCanvas" width = "946" height = "1920" class = "border-gray-600 border-x-4 border-y-4 rounded-lg my-4 bg-white">
         </canvas>
