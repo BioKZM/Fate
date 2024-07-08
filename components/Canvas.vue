@@ -2,6 +2,13 @@
 
 var dummyArray = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]
 var skillArray = ["Akademik","Aldatmaca","Atıcılık","Bağlantılar","Beden","Çeviklik","Empati","Farkındalık","Gizlilik","Gözlem","Hırsızlık","İlim","İrade","Kaynaklar","Kışkırtma","Muhabbet","Sürücülük","Yakın Dövüş","Zanaat"]
+var mijasaPNG = new Image();
+    mijasaPNG.src = '_nuxt/assets/mijasa.png';
+    console.log(mijasaPNG)
+    mijasaPNG.onload = function()
+    {
+        ctx.drawImage(mijasaPNG, 473, 1400,427,579);
+    }
 
 function createSheet(selection)
 {
@@ -136,13 +143,7 @@ function cropText(ctx,text,y)
     ctx.fillText(items[1],32,y+20) 
     ctx.fillText(items[2],32,y+40) 
     ctx.fillText(items[3],32,y+60) 
-    var mijasaPNG = new Image();
-    mijasaPNG.src = '_nuxt/assets/mijasa.png';
-    console.log(mijasaPNG)
-    mijasaPNG.onload = function()
-    {
-        ctx.drawImage(mijasaPNG, 473, 1400,427,579);
-    }
+
 
 
 function trimData(text)
