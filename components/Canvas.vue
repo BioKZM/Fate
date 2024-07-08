@@ -1,23 +1,27 @@
 <script setup>
 
+
+
 var dummyArray = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]
 var skillArray = ["Akademik","Aldatmaca","Atıcılık","Bağlantılar","Beden","Çeviklik","Empati","Farkındalık","Gizlilik","Gözlem","Hırsızlık","İlim","İrade","Kaynaklar","Kışkırtma","Muhabbet","Sürücülük","Yakın Dövüş","Zanaat"]
-var mijasaPNG = new Image();
-    mijasaPNG.src = '_nuxt/assets/mijasa.png';
-    console.log(mijasaPNG)
-    mijasaPNG.onload = function()
-    {
-        ctx.drawImage(mijasaPNG, 473, 1400,427,579);
-    }
+
 
 function createSheet(selection)
 {
+    
     var c = document.getElementById("sheetCanvas")
     var ctx = c.getContext("2d")
     
 
     if (selection == 0)
     {
+        var mijasaPNG = new Image();
+        mijasaPNG.src = 'assets/assets/mijasa.png';
+        console.log(mijasaPNG)
+        mijasaPNG.onload = function()
+        {
+            ctx.drawImage(mijasaPNG, 473, 1400,427,579);
+        }
         ctx.fillStyle="#FFFFFF"
         ctx.fillRect(0,0,946,1920)
 
@@ -121,13 +125,21 @@ function createSheet(selection)
         ctx.fillStyle="#FFFFFF"
         ctx.fillText("Skills",670,40)
 
-        
-
+        var downloadButton = document.getElementById("downloadButton")
+        downloadButton.disabled=false
+        downloadButton.classList.remove("bg-gray-700")
+        downloadButton.classList.add("bg-blue-800")
+        downloadButton.classList.add("hover:bg-blue-700")
     }
     
     else
     {
         ctx.clearRect(0,0,c.width,c.height)
+        var downloadButton = document.getElementById("downloadButton")
+        downloadButton.disabled=true
+        downloadButton.classList.remove("bg-blue-800")
+        downloadButton.classList.remove("hover:bg-blue-700")
+        downloadButton.classList.add("bg-gray-700")
     }
 
 }
@@ -158,7 +170,7 @@ function trimData(text)
     var secondPartArray = stringArray.slice(7,14)
     var thirdPartArray = stringArray.slice(14,21)
     var fourthPartArray = stringArray.slice(21,stringArray.length)
-    console.log(firstPartArray)
+    // console.log(firstPartArray)
 
     for (var x=0; x<firstPartArray.length;x++)
     {
@@ -179,14 +191,6 @@ function trimData(text)
     return [firstPartString,secondPartString,thirdPartString,fourthPartString]
 }
 
-
-        // Berkay
-        // annesi onu doğururken ölmüş babasında da çok küçük yaşta ayrı kalmış. babası hakkında tek hatırladığı şey onun alkolik ilgisiz şiddet yanlısı bir asshole oldupu ve onu arada sırada dövdüğü
-        // fazla içten pazarlıklı ve ağresif her an kavga çıkarmaya hazır her gördüğüne sallıyor bazen içten bazen dıştan
-        // berke'nin yüzünde gezdiriyor
-        // axi aldatma ikna etmek doğruyu söyletme bu da beyine uygulanan neuro electric sinyaller ile bağdaştırılabilir
-        // blink teleportation in close distances elektrik ile bağdaştırılabilir
-        // electric generation kılıcı elektrikle kaplama uzak mesafe elektrik mızrağı fırlatma dokunarak elektrik verme insanlara elektroşok robotlara kısa devre
 }
 function getJSONdata()
 {
@@ -274,6 +278,7 @@ function getJSONdata()
 </script>
 
 <template>
+    <img src="../assets/mijasa.png" style="display:none">
     <div class = "grid justify-center text-white">
         <canvas id = "sheetCanvas" width = "946" height = "1920" class = "border-gray-600 border-x-4 border-y-4 rounded-lg my-4 bg-white">
         </canvas>
@@ -286,7 +291,7 @@ function getJSONdata()
         <button @click ="createSheet(1)" class = "bg-red-800 px-7 py-2 mx-1 rounded-lg shadow-md hover:bg-red-700">Clear</button>
     </div>
     <div class = "flex justify-center py-5">
-        <button @click="getJSONdata" class = "bg-blue-800 px-20 py-2 rounded-lg shadow-md hover:bg-blue-700">Download Data</button>
+        <button @click="getJSONdata" id="downloadButton" class = "bg-gray-700 px-20 py-2 rounded-lg shadow-md" disabled>Download Data</button>
     </div>
 </template>
 
