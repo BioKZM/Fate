@@ -1,3 +1,3 @@
 # Fate Character Sheet Generator
 
-[Character Sheet Generator](biokzm.github.io/Fate)
+[Character Sheet Generator](https://biokzm.github.io/Fate)
